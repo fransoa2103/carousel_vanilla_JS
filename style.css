@@ -1,0 +1,128 @@
+*, ::after, ::before
+    {   margin:  0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+html, body
+    {   user-select: none;
+        overflow:    hidden;
+    }
+
+/* --------------------------------------------------------------------------------------- */
+/* EXPLAIN RESPONSIVE PC */
+/* @media screen PC > 920px                           */
+/* below, overflow hidden carousel = **********       */
+
+/*<-------------- container = 5 div x 320px --------->*/
+/***DIV1***|---DIV2---|---DIV3---|---DIV4---|***DIV5***/
+/*         |------ carousel = 3 x 320px ----|         */
+/**********|---IMG2---|---IMG3---|---IMG4---|**********/
+/*        carousel justify center in container        */
+/*         IMG position relative with left = 0        */
+
+.container
+    {   width:   100vw;
+        height:  100vh;
+        display: flex;
+        justify-content: center;
+        align-items:     center;
+        flex-direction:  column;
+        background-color: #333; 
+    }
+.carousel
+    {
+        width:    960px;
+        height:   320px;
+        display:  flex;
+        justify-content: center;
+        align-items:     center;
+        background-color: #111;
+        overflow: hidden;
+    }
+    
+img {   position: relative;
+        margin:   0 10px;
+    }
+
+
+/* --------------------------------------------------------------------------------------- */
+/* ANIMATION */
+/* translate 320px = img 300px + marginLeft 10px + marginRight 10px */
+/* --------------------------------------------------------------------------------------- */
+
+.activeRight
+    {   animation: slideRight 1.0s cubic-bezier(0.1, -0.1, 0.1, 1) forwards; }
+
+@keyframes slideRight
+    {   100% { transform: translateX(320px); }
+    }
+
+.activeLeft
+    {   animation: slideLeft 1.0s cubic-bezier(0.1, -0.1, 0.1, 1) forwards; }
+
+@keyframes slideLeft
+    {   100% { transform: translateX(-320px); }
+    }
+/* --------------------------------------------------------------------------------------- */
+/* TABLEAU DE COMMANDE */
+/* --------------------------------------------------------------------------------------- */
+h1  {   width: 50px;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: normal;
+        color: aliceblue;
+        margin: 0 10px;
+    }
+.direction 
+    {   display: flex;
+        flex-direction: row;
+    }
+.direction>*
+    {   cursor: pointer;    }
+
+
+/* --------------------------------------------------------------------------------------- */
+/* RESPONSIVE TABLET */
+/* --------------------------------------------------------------------------------------- */
+/* @media tablet 320px < screen > 920px               */
+/* below, overflow hidden carousel = **********       */
+
+/*<-------------- container = 5 div x 320px --------->*/
+/***DIV1***|---DIV2---|---DIV3---|---DIV4---|***DIV5***/
+/*              |------- carousel ------|             */
+/*              |------- 2 x 320 -------|             */
+/****|**********|---IMG3----|---IMG4----|**********|***/
+/*         carousel justify center in container       */
+/*       THEN img position relative LEFT = -160px     */
+
+@media screen and   ( max-width: 960px  )
+    {   .carousel   { width: 640px;     }
+        h1          { font-size: 2rem;  } 
+        img         { left: -160px;     } 
+    }
+
+/* --------------------------------------------------------------------------------------- */
+/* RESPONSIVE MOBILE */
+/* --------------------------------------------------------------------------------------- */
+/* @media mobile < 640px                              */
+/* below, overflow hidden carousel = **********       */
+
+/*<-------------- container = 5 div x 320px --------->*/
+/***DIV1***|---DIV2---|---DIV3---|---DIV4---|***DIV5***/
+/*                    | carousel |                    */
+/*                    | 1x320px  |                    */
+/**********|**********|---IMG3---|**********|**********/
+/*         carousel justify center in container       */
+/*         img position relative with left = 0        */
+
+@media screen and   ( max-width: 640px  )
+    {   .carousel   { width: 320px;     }
+        h1          { font-size: 1.5rem;} 
+        img         { left: 0px;        } 
+    }
+
+/*
+    // I NEED YOUR HELP TO IMPROVE THIS CODE.
+    // Je suis à l'écoute de toute votre aide pour améliorer mon code.
+    // MERCI THANX.
+*/
